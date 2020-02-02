@@ -3,52 +3,52 @@ public class Encrypter {
 
 	public static String encrypt(String s) {
 		
-		
-		int t;
+		//variables
 		int n = 0;
 		int i;
-		
-		char to_ch;
-		
-		
-		int arr[] = new int[4];
-		for (i = 0; i < 4; i++) {
-			to_ch = s.charAt(i);
-			arr[i] = Character.getNumericValue(to_ch);
-		}
+		int t;
 				
-				
-		for (i = 0; i < 4; i++) {
-			t = arr[i];
-			t += 7 % 10;
-			
-			arr[i] = t;	
-		}
+		char myChar;
+		//defines int myArrayay as an array capable of holding 4 ints
+		int myArray[] = new int[4];
 		
-		t = arr[0];
-		arr[0] = arr[1];
-		arr[2] = t;
-		t = arr[1];
-		arr[1] = arr[3];
-		arr[3] = t;
-		
-		
-		
-		
-		for(i = 0; i < 4; i++) {
-			
-			n = n * 10 + arr[i];
-		}
-			String out = Integer.toString(n);
-			
-			if (arr[0] == 0) {
-				out = "0" + out;
-				
-				return out;
+			for (i = 0; i < 4; i++) {
+				//set variable myChar to position of variable i
+				myChar = s.charAt(i);
+				//assigns myArrayay[i] equal to the numerical value of myChar
+				myArray[i] = Character.getNumericValue(myChar);
 			}
+				
+				
+			//as required per rubric, adding 7 to digit and getting remainder after diving by 10
+			for (i = 0; i < 4; i++) {
+				t = myArray[i];
+				t += 7 % 10;
 			
-			return out;
-	}
+				myArray[i] = t;	
+			}
+		
+			//swapping digits as required per rubric
+			t = myArray[0];
+			myArray[0] = myArray[1];
+			myArray[2] = t;
+			t = myArray[1];
+			myArray[1] = myArray[3];
+			myArray[3] = t;
+		
+		
+		
+			//for loop creating encrypted value
+			for(i = 0; i < 4; i++) {
+				
+				n = n * 10 + myArray[i];
+			}
+				//creates the string displayed to user as encrypted value
+				String out = Integer.toString(n);
+				
+				//returns value "out"
+				return out;
+		}
 	
 }
 		

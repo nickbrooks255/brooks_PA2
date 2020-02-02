@@ -2,27 +2,36 @@
 public class Decrypter {
 
 	public static String decrypt(String s) {
+		//variables
 		int n = 0;
 		int i;
 		int t;
+		int myNum;
 		
+		char myChar;
+		//defines int myArray as an array capable of holding 4 ints
 		int myArray[] = new int[4];
 		
+			//for loop
 	       for(i = 0; i < 4 ; i++) {
-	           char myChar = s.charAt(i);
+	    	   //returns variable myChar to position of variable i
+	           myChar = s.charAt(i);
+	           //assigns myArray[i] equal to the numerical value of myChar
 	           myArray[i] = Character.getNumericValue(myChar);
 	       }
 	       
-	       t = myArray[0];
-	       myArray[0]=myArray[2];
-	       myArray[2]=t;
-	       t = myArray[1];
-	       myArray[1]=myArray[3];
-	       myArray[3]=t;
+	       //swapping digits as required per rubric
+	       t = myArray[2];
+	       myArray[2] = myArray[0];
+	       myArray[0] = t;
+	       t = myArray[3];
+	       myArray[3] = myArray[3];
+	       myArray[3] = t;
 	       
 	       for(i = 0; i < 4 ; i++) {
-	           int num = myArray[i];
-	           switch(num) {
+	           myNum = myArray[i];
+	           //switch statement that returns specific value based on the value of variable myNum
+	           switch(myNum) {
 	               case 0:
 	                   myArray[i] = 3;
 	                   break;
@@ -56,16 +65,19 @@ public class Decrypter {
 	           }
 	       }
 	       
+	       //for loop creating decrypted value
 	       for(i = 0 ; i < 4 ; i++)
 	       {
 	    	   
 	           n = n * 10 + myArray[i];
 	           
 	       }
+	       
+	       //creates the string displayed to user as decrypted value
 	       String out = Integer.toString(n);
-	       if (myArray[0] == 0)
-	           out = "0"+ out;
+	       
+	       //returns value "out"
 	       return out;
 	      
 	   }
-}
+} 
