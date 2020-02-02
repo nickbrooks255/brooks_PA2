@@ -20,6 +20,13 @@ public class Decrypter {
 	           myArray[i] = Character.getNumericValue(myChar);
 	       }
 	       
+	       for (i = 0; i < 4; i++) {
+				t = myArray[i];
+				t += 3 % 10;
+			
+				myArray[i] = t;	
+			}
+	       
 	       //swapping digits as required per rubric
 	       t = myArray[2];
 	       myArray[2] = myArray[0];
